@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { testimonials } from "../data/content";
+---
+<BaseLayout title="Testimonials" description="Customer notes about Helen & Ed's Tree Farm.">
+  <section class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="font-display text-4xl text-[var(--color-forest)]">Testimonials</h1>
+    <p class="mt-3 text-[var(--color-muted)]">A few notes from customers. Stub page — more stories welcome.</p>
+    <div class="mt-8 space-y-6">
+      {
+        testimonials.map((t) => (
+          <blockquote class="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+            <p class="text-[var(--color-charcoal)]">“{t.quote}”</p>
+            <footer class="mt-3 text-sm font-medium text-[var(--color-muted)]">— {t.by}</footer>
+          </blockquote>
+        ))
+      }
+    </div>
+    <p class="mt-8 text-sm text-[var(--color-muted)]">
+      Fall 2007: WBRE TV filmed an on-site news segment with customer and proprietor interviews.
+    </p>
+  </section>
+</BaseLayout>

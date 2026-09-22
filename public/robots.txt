@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://helenandedstreefarm.com/sitemap.xml

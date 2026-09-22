@@ -1,0 +1,55 @@
+---
+import { site, hours, nav } from "../data/site";
+---
+<footer class="mt-auto bg-[var(--color-needle)] text-[var(--color-snow)]">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-3">
+    <div>
+      <p class="font-display text-2xl font-semibold text-[var(--color-snow)]">{site.name}</p>
+      <p class="mt-1 text-sm text-[var(--color-snow)]/80">{site.tagline}</p>
+      <address class="mt-4 not-italic text-sm leading-relaxed text-[var(--color-snow)]/85">
+        {site.address.street}<br />
+        {site.address.city}, {site.address.state} {site.address.zip}<br />
+        {site.address.township}
+      </address>
+      <p class="mt-3 text-sm">
+        <a class="text-[var(--color-snow)] underline-offset-2 hover:underline" href={`tel:${site.phones.office.tel}`}>
+          Office {site.phones.office.display}
+        </a>
+        <br />
+        <a class="text-[var(--color-snow)] underline-offset-2 hover:underline" href={`tel:${site.phones.ed.tel}`}>
+          Ed {site.phones.ed.display}
+        </a>
+        <br />
+        <a class="text-[var(--color-snow)] underline-offset-2 hover:underline" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+    <div>
+      <p class="font-semibold text-[var(--color-snow)]">Hours</p>
+      <ul class="mt-3 space-y-2 text-sm text-[var(--color-snow)]/85">
+        <li><strong class="text-[var(--color-snow)]">{hours.christmas.label}:</strong> {hours.christmas.summary}</li>
+        <li><strong class="text-[var(--color-snow)]">{hours.landscape.label}:</strong> {hours.landscape.summary}</li>
+      </ul>
+      <p class="mt-4 text-sm text-[var(--color-snow)]/70">Info only — no online ordering. Visit or call to buy.</p>
+    </div>
+    <div>
+      <p class="font-semibold text-[var(--color-snow)]">Explore</p>
+      <ul class="mt-3 columns-2 gap-x-6 text-sm">
+        {
+          nav.map((item) => (
+            <li class="mb-2 break-inside-avoid">
+              <a class="text-[var(--color-snow)]/85 underline-offset-2 hover:underline" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="mb-2"><a class="text-[var(--color-snow)]/85 underline-offset-2 hover:underline" href="/privacy">Privacy</a></li>
+        <li class="mb-2"><a class="text-[var(--color-snow)]/85 underline-offset-2 hover:underline" href="/sitemap">Sitemap</a></li>
+        <li class="mb-2"><a class="text-[var(--color-snow)]/85 underline-offset-2 hover:underline" href="/faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-[var(--color-snow)]/10 px-4 py-4 text-center text-xs text-[var(--color-snow)]/60">
+    © {new Date().getFullYear()} {site.name}. All rights reserved.
+  </div>
+</footer>

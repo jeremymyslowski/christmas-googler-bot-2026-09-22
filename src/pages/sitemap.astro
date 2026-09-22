@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/christmas-trees", label: "Christmas Trees" },
+  { href: "/landscape", label: "Landscape" },
+  { href: "/inventory", label: "Inventory / Prices" },
+  { href: "/wholesale", label: "Wholesale" },
+  { href: "/visit", label: "Directions & Hours" },
+  { href: "/about", label: "About" },
+  { href: "/about#history", label: "History" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/gallery", label: "Gallery" },
+];
+---
+<BaseLayout title="Sitemap" description="HTML sitemap for Helen & Ed's Tree Farm.">
+  <section class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="font-display text-4xl text-[var(--color-forest)]">Sitemap</h1>
+    <ul class="mt-8 columns-1 gap-x-8 sm:columns-2">
+      {
+        links.map((l) => (
+          <li class="mb-3 break-inside-avoid">
+            <a class="font-medium text-[var(--color-forest)] underline-offset-2 hover:underline" href={l.href}>
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import { aboutFarm, history } from "../data/content";
+import { site } from "../data/site";
+---
+<BaseLayout
+  title="About the Farm"
+  description="Helen & Ed's Tree Farm history since 1957 — 220 acres in Dorrance Township, family-grown Christmas and landscape trees."
+>
+  <section class="border-b border-[var(--color-border)] bg-[var(--color-cream-dark)]">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <h1 class="font-display text-4xl text-[var(--color-forest)] sm:text-5xl">About {site.name}</h1>
+      <p class="mt-4 max-w-3xl text-lg text-[var(--color-muted)]">{aboutFarm.blurb}</p>
+      <p class="mt-3 text-sm text-[var(--color-muted)]">{site.tagline}</p>
+      <div class="mt-6">
+        <Button href="#history">Read our history</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pt-10">
+    <div class="mx-auto max-w-lg">
+      <!-- TEMP placeholder -->
+      <figure class="snapshot snapshot--tilt">
+        <img
+          src="/photos/about-field.jpg"
+          alt="Evergreen forest and farm fields"
+          class="aspect-[4/3] w-full object-cover"
+          width="800"
+          height="600"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <h2 class="font-display text-3xl text-[var(--color-forest)]">What we grow</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      <div class="rounded-2xl border border-[var(--color-border)] bg-white p-5">
+        <h3 class="font-display text-xl text-[var(--color-forest)]">Evergreens</h3>
+        <p class="mt-2 text-sm text-[var(--color-muted)]">{aboutFarm.evergreens}</p>
+      </div>
+      <div class="rounded-2xl border border-[var(--color-border)] bg-white p-5">
+        <h3 class="font-display text-xl text-[var(--color-forest)]">Deciduous</h3>
+        <p class="mt-2 text-sm text-[var(--color-muted)]">{aboutFarm.deciduous}</p>
+      </div>
+    </div>
+    <p class="mt-6 text-[var(--color-muted)]">{aboutFarm.practice}</p>
+    <p class="mt-4 text-[var(--color-muted)]">{aboutFarm.pruning}</p>
+  </section>
+
+  <section id="history" class="scroll-mt-24 border-t border-[var(--color-border)] bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <h2 class="font-display text-3xl text-[var(--color-forest)] sm:text-4xl">Our history</h2>
+      <div class="mt-8 space-y-8">
+        {
+          history.map((chapter) => (
+            <article class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-cream)] p-6">
+              <h3 class="font-display text-2xl text-[var(--color-forest)]">{chapter.title}</h3>
+              <p class="mt-3 text-[var(--color-muted)]">{chapter.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

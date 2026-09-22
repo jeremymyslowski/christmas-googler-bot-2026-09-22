@@ -1,0 +1,22 @@
+---
+import { site } from "../data/site";
+
+const stats = [
+  { value: String(site.since), label: "Family-grown since" },
+  { value: `${site.acres}`, label: "Acres in Dorrance Twp" },
+  { value: "Wholesale + retail", label: "Buyers welcome" },
+  { value: "Arborist", label: "Certified consulting" },
+];
+---
+<section class="bg-[var(--color-needle)] text-[var(--color-snow)]" aria-label="Farm highlights">
+  <div class="mx-auto grid max-w-6xl gap-6 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
+    {
+      stats.map((s) => (
+        <div class="text-center">
+          <p class="font-display text-3xl font-semibold text-[var(--color-snow)] sm:text-4xl">{s.value}</p>
+          <p class="mt-1 text-sm text-[var(--color-snow)]/80">{s.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

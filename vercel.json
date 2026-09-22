@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    { "source": "/index.php", "destination": "/", "permanent": true },
+    { "source": "/christmasTrees.php", "destination": "/christmas-trees", "permanent": true },
+    { "source": "/landscapingTrees.php", "destination": "/landscape", "permanent": true },
+    { "source": "/wholesaleTrees.php", "destination": "/wholesale", "permanent": true },
+    { "source": "/inventory.php", "destination": "/inventory", "permanent": true },
+    { "source": "/specials.php", "destination": "/inventory", "permanent": true },
+    { "source": "/drivingDirectionsHours.php", "destination": "/visit", "permanent": true },
+    { "source": "/drivingDirectionsANDHours.php", "destination": "/visit", "permanent": true },
+    { "source": "/history.php", "destination": "/about#history", "permanent": true },
+    { "source": "/history2.php", "destination": "/about#history", "permanent": true },
+    { "source": "/theFarm.php", "destination": "/about", "permanent": true },
+    { "source": "/ourService.php", "destination": "/about", "permanent": true },
+    { "source": "/contactUs.php", "destination": "/contact", "permanent": true },
+    { "source": "/privacyPolicy.php", "destination": "/privacy", "permanent": true },
+    { "source": "/siteMap.php", "destination": "/sitemap", "permanent": true },
+    { "source": "/faq.php", "destination": "/faq", "permanent": true },
+    { "source": "/testimonials.php", "destination": "/testimonials", "permanent": true },
+    { "source": "/photoGallery.php", "destination": "/gallery", "permanent": true }
+  ]
+}

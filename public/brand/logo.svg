@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Helen &amp; Ed's Tree Farm pine mark">
+  <circle cx="60" cy="60" r="58" fill="#1A3D2E" stroke="#F4EFE4" stroke-width="3"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#4F7A5A" stroke-width="1.5" opacity="0.6"/>
+  <!-- Pine silhouette -->
+  <path fill="#C5D1B7" d="M60 18 L78 48 H70 L82 68 H72 L86 90 H34 L48 68 H38 L50 48 H42 Z"/>
+  <rect x="55" y="88" width="10" height="14" rx="1" fill="#8B6914"/>
+  <!-- Soft highlight -->
+  <path fill="#FFFdf8" opacity="0.15" d="M60 22 L68 42 H64 L70 56 H66 L72 72 H48 L54 56 H50 L56 42 H52 Z"/>
+</svg>

@@ -1,0 +1,72 @@
+{
+  "seasonLabel": "Spring 2026",
+  "title": "Balled and Burlapped Price List",
+  "intro": "Plants are grown in hardy Zone 5. Fast quality service. Delivery quote upon request — small or large loads. Planting services available. Discounts on wholesale orders. Display only — call or email to order; no online checkout.",
+  "contactNote": "Call office (570) 868-6252 or cell 570-498-6209, or email Ed Myslowski Jr., Grower/Certified Arborist, nursery@epix.net for availability and ordering.",
+  "categories": [
+    {
+      "name": "Spruce & Hemlock",
+      "items": [
+        { "name": "Norway Spruce (Picea abies)", "sizes": [{ "size": "5'", "price": 95 }, { "size": "6'", "price": 125 }] },
+        { "name": "Serbian Spruce (Picea omorika)", "sizes": [{ "size": "5'", "price": 95 }] },
+        { "name": "Colorado Blue Spruce (Picea pungens glauca)", "sizes": [{ "size": "5'", "price": 95 }, { "size": "6'", "price": 125 }] },
+        { "name": "Canadian Hemlock (Tsuga canadensis)", "sizes": [{ "size": "7'", "price": 125 }, { "size": "8'", "price": 150 }], "notes": "#2s thin bottoms" }
+      ]
+    },
+    {
+      "name": "Arborvitae",
+      "items": [
+        {
+          "name": "Green Giant and ‘Spring Grove’ arborvitae",
+          "sizes": [
+            { "size": "5–6'", "price": 85 },
+            { "size": "7'", "price": 100 },
+            { "size": "8'", "price": 135 },
+            { "size": "9'", "price": 165 },
+            { "size": "10'", "price": 195 },
+            { "size": "11–12'", "price": 220 }
+          ],
+          "notes": "Call or text cell for availability. Some sizes limited."
+        },
+        {
+          "name": "Emerald Green Arborvitae",
+          "sizes": [
+            { "size": "7'", "price": 85 },
+            { "size": "8'", "price": 115 },
+            { "size": "9'", "price": 135 },
+            { "size": "10'", "price": 150 },
+            { "size": "11'", "price": 175 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pine",
+      "items": [
+        {
+          "name": "Eastern White Pine (Pinus strobus)",
+          "sizes": [
+            { "size": "6'", "price": 105 },
+            { "size": "7'", "price": 125 },
+            { "size": "8'", "price": 150 }
+          ],
+          "soldOut": true,
+          "notes": "Sold out of white pine for 2026."
+        }
+      ]
+    },
+    {
+      "name": "Deciduous specimens",
+      "items": [
+        { "name": "Acer rubrum ‘Redpoint’ Red Maple", "sizes": [{ "size": "2–2.5\"", "price": 175 }] },
+        { "name": "Cercis canadensis ‘Covey’ Lavender Twist Redbud", "sizes": [{ "size": "2\" trunk", "price": 150 }] },
+        { "name": "Kwanzan Cherry (pink flowering)", "sizes": [{ "size": "2.5\" trunk · 12' tall", "price": 175 }] },
+        { "name": "Beijing Gold Tree Lilac", "sizes": [{ "size": "2\" trunk · 12' tall", "price": 175 }] },
+        { "name": "Pink Cascade weeping cherry", "sizes": [{ "size": "2\" trunk · 6' tall", "price": 150 }] },
+        { "name": "Cercis canadensis ‘Forest Pansy’", "sizes": [{ "size": "2\" trunk", "price": 150 }] },
+        { "name": "Malus ‘Royal Beauty’ crabapple weeping", "sizes": [{ "size": "2\" trunk · 6' tall", "price": 150 }] },
+        { "name": "Scarlet Oak", "sizes": [{ "size": "10' · 1.5\" trunk", "price": 150 }] }
+      ]
+    }
+  ]
+}

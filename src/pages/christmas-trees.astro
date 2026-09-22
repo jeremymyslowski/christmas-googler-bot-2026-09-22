@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import { christmas } from "../data/content";
+import { site, hours } from "../data/site";
+---
+<BaseLayout
+  title="Christmas Trees"
+  description="Choose-and-cut and fresh-cut Christmas trees at Helen & Ed's Tree Farm since the early 1960s. Pines, firs, spruces, wreaths, and stands in Wapwallopen, PA."
+>
+  <section class="border-b border-[var(--color-border)] bg-[var(--color-cream-dark)]">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <p class="text-sm font-semibold uppercase tracking-wider text-[var(--color-berry)]">Christmas trees</p>
+      <h1 class="mt-2 font-display text-4xl text-[var(--color-forest)] sm:text-5xl">Choose & cut · Fresh cut daily</h1>
+      <p class="mt-4 max-w-3xl text-lg text-[var(--color-muted)]">{christmas.intro}</p>
+      <p class="mt-3 text-sm font-medium text-[var(--color-charcoal)]">{hours.christmas.summary}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <Button href="/visit">Get directions</Button>
+        <Button href={`tel:${site.phones.office.tel}`} variant="secondary">Call {site.phones.office.display}</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pt-10">
+    <div class="mx-auto max-w-md md:mx-0 md:max-w-lg">
+      <!-- TEMP placeholder -->
+      <figure class="snapshot snapshot--tilt">
+        <img
+          src="/photos/christmas-path.jpg"
+          alt="Christmas trees on the farm"
+          class="aspect-[4/3] w-full object-cover"
+          width="800"
+          height="600"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <h2 class="font-display text-3xl text-[var(--color-forest)]">Varieties</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-3">
+      <div class="rounded-2xl border border-[var(--color-border)] bg-white p-5">
+        <h3 class="font-display text-xl text-[var(--color-forest)]">Pine</h3>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-[var(--color-muted)]">
+          {christmas.varieties.pine.map((v) => <li>{v}</li>)}
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-[var(--color-border)] bg-white p-5">
+        <h3 class="font-display text-xl text-[var(--color-forest)]">Fir</h3>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-[var(--color-muted)]">
+          {christmas.varieties.fir.map((v) => <li>{v}</li>)}
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-[var(--color-border)] bg-white p-5">
+        <h3 class="font-display text-xl text-[var(--color-forest)]">Spruce</h3>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-[var(--color-muted)]">
+          {christmas.varieties.spruce.map((v) => <li>{v}</li>)}
+        </ul>
+      </div>
+    </div>
+    <p class="mt-4 text-sm text-[var(--color-muted)]">
+      Wreaths available: {christmas.wreaths.join(", ")}.
+    </p>
+  </section>
+
+  <section class="border-t border-[var(--color-border)] bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <h2 class="font-display text-3xl text-[var(--color-forest)]">On-site amenities</h2>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          christmas.amenities.map((a) => (
+            <li class="flex items-start gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-cream)] px-4 py-3 text-sm text-[var(--color-charcoal)]">
+              <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-[var(--color-berry)]" aria-hidden="true" />
+              {a}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-8 rounded-xl border border-[var(--color-border)] bg-[var(--color-cream-dark)] p-4 text-sm text-[var(--color-muted)]">
+        {christmas.pricingNote}
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy for Helen & Ed's Tree Farm website — informational site with no online ordering."
+>
+  <section class="mx-auto max-w-3xl px-4 py-12 prose-farm">
+    <h1 class="font-display text-4xl text-[var(--color-forest)]">Privacy Policy</h1>
+    <p class="mt-2 text-sm text-[var(--color-muted)]">Last updated: September 2026</p>
+
+    <h2 class="mt-10 font-display text-2xl text-[var(--color-forest)]">Who we are</h2>
+    <p class="mt-3">
+      This website is operated by {site.name}, {site.address.street}, {site.address.city}, {site.address.state}{" "}
+      {site.address.zip}. Contact us at{" "}
+      <a class="underline" href={`mailto:${site.email}`}>{site.email}</a> or{" "}
+      <a class="underline" href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>.
+    </p>
+
+    <h2 class="mt-10 font-display text-2xl text-[var(--color-forest)]">What this site does</h2>
+    <p class="mt-3">
+      This is an informational marketing website. We do not sell products online, process payments, take reservations,
+      or store customer accounts. Purchases and appointments happen by phone or in person.
+    </p>
+
+    <h2 class="mt-10 font-display text-2xl text-[var(--color-forest)]">Information we collect</h2>
+    <ul class="mt-3 list-disc space-y-2 pl-5 text-[var(--color-muted)]">
+      <li>
+        <strong class="text-[var(--color-charcoal)]">Server / hosting logs:</strong> standard technical logs (IP address,
+        user agent, pages requested) may be collected by our hosting provider for security and reliability, then discarded
+        or aggregated per their policies.
+      </li>
+      <li>
+        <strong class="text-[var(--color-charcoal)]">Contact form / email:</strong> if you use the contact form, your
+        message opens in your own email app (mailto). We only receive what you choose to send to {site.email}. We use that
+        information to respond to your inquiry.
+      </li>
+      <li>
+        <strong class="text-[var(--color-charcoal)]">Phone:</strong> if you call us, we use your number to answer questions
+        about trees, nursery stock, wholesale, or appointments.
+      </li>
+    </ul>
+
+    <h2 class="mt-10 font-display text-2xl text-[var(--color-forest)]">Cookies & ads</h2>
+    <p class="mt-3">
+      We do not set marketing cookies on this site and do not partner with ad server companies for this website.
+    </p>
+
+    <h2 class="mt-10 font-display text-2xl text-[var(--color-forest)]">Sharing</h2>
+    <p class="mt-3">
+      We do not sell personal information. We use contact details you provide only to respond to you about farm business
+      (retail, wholesale, landscape appointments, or general questions).
+    </p>
+    <p class="mt-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-cream-dark)] p-4 text-sm text-[var(--color-muted)]">
+      <strong class="text-[var(--color-charcoal)]">TODO (confirm with owner):</strong> The previous site privacy copy
+      mentioned sharing mailing/phone lists with “other reputable organizations.” This rewritten policy assumes we do{" "}
+      <em>not</em> share contact lists for third-party marketing. Confirm with Jeremy before launch and adjust if needed.
+    </p>
+
+    <h2 class="mt-10 font-display text-2xl text-[var(--color-forest)]">Your choices</h2>
+    <p class="mt-3">
+      To update or remove your contact information from our farm records, email {site.email} or call{" "}
+      {site.phones.office.display} with your name and the details you want changed.
+    </p>
+
+    <h2 class="mt-10 font-display text-2xl text-[var(--color-forest)]">Security</h2>
+    <p class="mt-3">
+      We take reasonable steps to protect information we receive by phone or email. Because this site does not process
+      online orders, we do not store payment card data.
+    </p>
+  </section>
+</BaseLayout>

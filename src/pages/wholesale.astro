@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import { wholesale } from "../data/content";
+import { site } from "../data/site";
+---
+<BaseLayout
+  title="Wholesale"
+  description="Wholesale evergreen and deciduous trees, seedlings, and transplants from Helen & Ed's Tree Farm. Delivery across the Northeast."
+>
+  <section class="border-b border-[var(--color-border)] bg-[var(--color-cream-dark)]">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <p class="text-sm font-semibold uppercase tracking-wider text-[var(--color-maple)]">Wholesale & retail</p>
+      <h1 class="mt-2 font-display text-4xl text-[var(--color-forest)] sm:text-5xl">Landscape trees & seedlings for the trade</h1>
+      <p class="mt-4 max-w-3xl text-lg text-[var(--color-muted)]">{wholesale.intro}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <Button href={`tel:${site.phones.office.tel}`}>Call office</Button>
+        <Button href={`mailto:${site.email}?subject=Wholesale%20inquiry`} variant="secondary">Email inquiry</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12 prose-farm">
+    <h2 class="font-display text-3xl text-[var(--color-forest)]">Dug fresh when ordered</h2>
+    <p class="mt-4">{wholesale.digging}</p>
+  </section>
+
+  <section class="border-t border-[var(--color-border)] bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <h2 class="font-display text-3xl text-[var(--color-forest)]">Seedlings & transplants</h2>
+      <div class="mt-6 space-y-4 text-[var(--color-muted)]">
+        <p>{wholesale.seedlings.volume} Varieties include {wholesale.seedlings.varieties}</p>
+        <p>{wholesale.seedlings.genetics}</p>
+        <p>{wholesale.seedlings.process}</p>
+        <p class="font-medium text-[var(--color-charcoal)]">{wholesale.seedlings.pricing}</p>
+      </div>
+      <ul class="mt-8 flex flex-wrap gap-2">
+        {
+          wholesale.services.map((s) => (
+            <li class="rounded-full border border-[var(--color-border)] bg-[var(--color-cream)] px-4 py-2 text-sm font-medium text-[var(--color-forest)]">
+              {s}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6 text-sm text-[var(--color-muted)]">
+        Order by phone or email only — no online ordering on this site.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

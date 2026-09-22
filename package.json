@@ -1,0 +1,22 @@
+{
+  "name": "helen-eds-treefarm",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "@fontsource/fraunces": "^5.2.5",
+    "@fontsource/source-sans-3": "^5.2.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.9.2"
+  }
+}

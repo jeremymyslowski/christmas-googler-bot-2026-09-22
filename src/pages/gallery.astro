@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+
+const photos = [
+  { src: "/photos/hero-needles.jpg", alt: "Evergreen needles close-up" },
+  { src: "/photos/intro-rows.jpg", alt: "Rows of trees in the field" },
+  { src: "/photos/christmas-path.jpg", alt: "Christmas trees" },
+  { src: "/photos/landscape-path.jpg", alt: "Landscape nursery stock" },
+  { src: "/photos/barn-visit.jpg", alt: "Barn and hillside" },
+  { src: "/photos/about-field.jpg", alt: "Forest and farm fields" },
+];
+---
+<BaseLayout title="Photo Gallery" description="Photo gallery for Helen & Ed's Tree Farm.">
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <h1 class="font-display text-4xl text-[var(--color-forest)]">Photo gallery</h1>
+    <p class="mt-3 max-w-2xl text-[var(--color-muted)]">
+      A peek at evergreen life on the farm. <!-- TEMP placeholder --> Photos below are temporary stock until farm originals are confirmed for reuse.
+    </p>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        photos.map((p, i) => (
+          <figure class:list={["snapshot", i % 2 === 0 ? "snapshot--tilt" : "snapshot--tilt-right"]}>
+            <img src={p.src} alt={p.alt} class="aspect-[4/3] w-full object-cover" width="600" height="450" loading="lazy" />
+          </figure>
+        ))
+      }
+    </div>
+    <div class="mt-8">
+      <Button href="/visit">Plan a visit</Button>
+    </div>
+  </section>
+</BaseLayout>

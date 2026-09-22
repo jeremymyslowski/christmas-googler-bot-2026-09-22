@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+import UtilityBar from "../components/UtilityBar.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+import type { Season } from "../data/seasons";
+import { getSeasonForDate, parseSeasonOverride } from "../data/seasons";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  showChrome?: boolean;
+}
+const {
+  title,
+  description = site.description,
+  ogImage = "/favicon.svg",
+  showChrome = true,
+} = Astro.props;
+
+const seasonOverride = parseSeasonOverride(Astro.url.searchParams.get("season"));
+const season: Season = seasonOverride ?? getSeasonForDate(new Date());
+const fullTitle = title.includes(site.name) ? title : `${title} · ${site.name}`;
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  description: site.description,
+  url: site.url,
+  telephone: site.phones.office.display,
+  email: site.email,
+  foundingDate: String(site.since),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: site.geo.lat,
+    longitude: site.geo.lng,
+  },
+  areaServed: "Northeastern Pennsylvania",
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={new URL(ogImage, site.url).toString()} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body data-season={season} class="flex min-h-screen flex-col">
+    <a class="skip-link" href="#main">Skip to content</a>
+    {showChrome && <UtilityBar season={season} />}
+    {showChrome && <SiteHeader season={season} />}
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    {showChrome && <Footer />}
+    <script>
+      import { applyClientSeason } from "../scripts/season";
+      applyClientSeason();
+    </script>
+  </body>
+</html>

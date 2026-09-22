@@ -1,0 +1,307 @@
+@import "tailwindcss";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/source-sans-3/400.css";
+@import "@fontsource/source-sans-3/500.css";
+@import "@fontsource/source-sans-3/600.css";
+@import "@fontsource/source-sans-3/700.css";
+
+@theme {
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+
+  --color-sage: #C5D1B7;
+  --color-sage-deep: #A8B89A;
+  --color-paper: #F4EFE4;
+  --color-paper-dark: #E6DFD0;
+
+  --color-needle: #1A3D2E;
+  --color-canopy: #2F5C45;
+  --color-moss: #4F7A5A;
+
+  --color-bark: #3E2A1F;
+  --color-bark-mid: #5C4030;
+  --color-timber: #8B6914;
+
+  --color-ink: #1F1A14;
+  --color-ink-muted: #5A5248;
+
+  --color-berry: #8B3A3A;
+  --color-maple: #9A6B24;
+  --color-focus: #2B6CB0;
+
+  --color-snow: #FFFdf8;
+  --color-border: #C9BFAE;
+
+  --color-forest: #1A3D2E;
+  --color-pine: #4F7A5A;
+  --color-cream: #F4EFE4;
+  --color-cream-dark: #E6DFD0;
+  --color-charcoal: #1F1A14;
+  --color-muted: #5A5248;
+}
+
+:root {
+  --color-sage: #C5D1B7;
+  --color-sage-deep: #A8B89A;
+  --color-paper: #F4EFE4;
+  --color-paper-dark: #E6DFD0;
+  --color-needle: #1A3D2E;
+  --color-canopy: #2F5C45;
+  --color-moss: #4F7A5A;
+  --color-bark: #3E2A1F;
+  --color-bark-mid: #5C4030;
+  --color-timber: #8B6914;
+  --color-ink: #1F1A14;
+  --color-ink-muted: #5A5248;
+  --color-berry: #8B3A3A;
+  --color-maple: #9A6B24;
+  --color-focus: #2B6CB0;
+  --color-snow: #FFFdf8;
+  --color-border: #C9BFAE;
+  --color-cta: var(--color-maple);
+
+  --color-forest: var(--color-needle);
+  --color-pine: var(--color-moss);
+  --color-cream: var(--color-paper);
+  --color-cream-dark: var(--color-paper-dark);
+  --color-charcoal: var(--color-ink);
+  --color-muted: var(--color-ink-muted);
+}
+
+body[data-season="christmas"],
+[data-season="christmas"] {
+  --color-cta: var(--color-berry);
+}
+
+body[data-season="landscape"],
+body[data-season="offpeak"],
+[data-season="landscape"],
+[data-season="offpeak"] {
+  --color-cta: var(--color-maple);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-sage);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  line-height: 1.6;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 1.2;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+    line-height: 1.2;
+  }
+
+  /* Scoped inherit — never override .site-nav chrome links */
+  main a,
+  .prose-farm a,
+  footer a {
+    color: inherit;
+  }
+}
+
+h1.hero-title,
+.hero-title {
+  color: var(--color-snow);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  background: var(--color-needle);
+  color: var(--color-snow);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+    transform 0.15s ease;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--color-cta);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-needle);
+  border-color: var(--color-needle);
+}
+
+.btn-secondary:hover {
+  background: var(--color-needle);
+  color: var(--color-snow);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-needle);
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  border-radius: 0.25rem;
+  padding-inline: 0.5rem;
+}
+
+.prose-farm p {
+  margin: 0 0 1rem;
+  color: var(--color-ink-muted);
+}
+
+.prose-farm p:last-child {
+  margin-bottom: 0;
+}
+
+.snapshot {
+  background: #fff;
+  padding: 0.625rem;
+  box-shadow: 0 4px 14px rgba(31, 26, 20, 0.12), 0 1px 3px rgba(31, 26, 20, 0.08);
+  display: block;
+  line-height: 0;
+}
+
+.snapshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.snapshot--tilt {
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .snapshot--tilt {
+    transform: rotate(-1.5deg);
+  }
+  .snapshot--tilt-right {
+    transform: rotate(1.5deg);
+  }
+}
+
+.placeholder-visual {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(79, 122, 90, 0.35), transparent 55%),
+    radial-gradient(ellipse at 80% 70%, rgba(139, 58, 58, 0.18), transparent 50%),
+    linear-gradient(160deg, #1a3d2e 0%, #2f5c45 45%, #4f7a5a 100%);
+}
+
+/* Site nav on bark — explicit AA colors */
+.site-nav a,
+.site-nav-link {
+  color: var(--color-snow);
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav-link:hover {
+  background: rgba(255, 253, 248, 0.12);
+  color: var(--color-snow);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 253, 248, 0.6);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.site-nav a[aria-current="page"],
+.site-nav a.is-active,
+.site-nav-link[aria-current="page"],
+.site-nav-link.is-active {
+  background: var(--color-paper);
+  color: var(--color-needle);
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="page"]:hover,
+.site-nav a.is-active:hover,
+.site-nav-link[aria-current="page"]:hover,
+.site-nav-link.is-active:hover {
+  background: var(--color-paper);
+  color: var(--color-needle);
+  text-decoration: none;
+}
+
+.site-nav-mobile a,
+.site-nav-link-mobile {
+  color: var(--color-needle);
+  text-decoration: none;
+}
+
+.site-nav-mobile a:hover,
+.site-nav-link-mobile:hover {
+  background: rgba(168, 184, 154, 0.3);
+  color: var(--color-needle);
+}
+
+.site-nav-mobile a[aria-current="page"],
+.site-nav-mobile a.is-active,
+.site-nav-link-mobile[aria-current="page"],
+.site-nav-link-mobile.is-active {
+  background: var(--color-needle);
+  color: var(--color-snow);
+}
+
+.site-nav-mobile a[aria-current="page"]:hover,
+.site-nav-mobile a.is-active:hover,
+.site-nav-link-mobile[aria-current="page"]:hover,
+.site-nav-link-mobile.is-active:hover {
+  background: var(--color-needle);
+  color: var(--color-snow);
+}
+
+.season-chip {
+  background: var(--color-paper);
+  color: var(--color-needle);
+  border-color: var(--color-border);
+}

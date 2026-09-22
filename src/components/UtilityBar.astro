@@ -1,0 +1,35 @@
+---
+import type { Season } from "../data/seasons";
+import { site, hours } from "../data/site";
+import SeasonChip from "./SeasonChip.astro";
+
+interface Props {
+  season: Season;
+}
+const { season } = Astro.props;
+const hoursHint =
+  season === "christmas" ? hours.christmas.summary : hours.landscape.summary;
+---
+<div class="sticky top-0 z-50 border-b border-[var(--color-bark-mid)] bg-[var(--color-bark)] text-[var(--color-snow)]">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-sm">
+    <div class="flex flex-wrap items-center gap-3">
+      <a
+        class="font-semibold text-[var(--color-snow)] underline-offset-2 hover:underline"
+        href={`tel:${site.phones.office.tel}`}
+      >
+        Call office {site.phones.office.display}
+      </a>
+      <span class="text-[var(--color-snow)]/50" aria-hidden="true">·</span>
+      <a
+        class="text-[var(--color-snow)]/90 underline-offset-2 hover:underline"
+        href={`tel:${site.phones.ed.tel}`}
+      >
+        Ed {site.phones.ed.display}
+      </a>
+    </div>
+    <div class="flex items-center gap-2">
+      <SeasonChip season={season} />
+      <span data-season-hours class="hidden text-xs text-[var(--color-snow)]/80 md:inline">{hoursHint}</span>
+    </div>
+  </div>
+</div>

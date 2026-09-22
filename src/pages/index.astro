@@ -1,0 +1,183 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import PathCard from "../components/PathCard.astro";
+import StepList from "../components/StepList.astro";
+import StatStrip from "../components/StatStrip.astro";
+import { site, services, hours } from "../data/site";
+import { getSeasonForDate, parseSeasonOverride, seasonCopy } from "../data/seasons";
+import { aboutFarm } from "../data/content";
+
+const season = parseSeasonOverride(Astro.url.searchParams.get("season")) ?? getSeasonForDate(new Date());
+const copy = seasonCopy[season];
+---
+<BaseLayout title={`${site.name} — ${site.tagline}`} description={site.description}>
+  <!-- 3. Hero — real photo, snow text, seasonal CTA + visit secondary -->
+  <section class="relative min-h-[70vh] overflow-hidden">
+    <!-- TEMP placeholder -->
+    <img
+      src="/photos/hero-needles.jpg"
+      alt="Close-up of evergreen needles on the farm"
+      class="absolute inset-0 h-full w-full object-cover"
+      width="1600"
+      height="900"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/25"></div>
+    <div class="relative mx-auto flex min-h-[70vh] max-w-6xl flex-col justify-end px-4 pb-12 pt-24 sm:pb-16">
+      <p
+        data-season-hero-eyebrow
+        class="text-sm font-semibold uppercase tracking-wider text-[var(--color-snow)]/90"
+      >
+        {copy.heroEyebrow}
+      </p>
+      <h1
+        data-season-hero-title
+        class="hero-title mt-3 max-w-3xl font-display text-4xl font-semibold text-[var(--color-snow)] sm:text-5xl lg:text-6xl"
+      >
+        {copy.heroTitle}
+      </h1>
+      <p
+        data-season-hero-body
+        class="mt-4 max-w-2xl text-lg text-[var(--color-snow)]/90"
+      >
+        {copy.heroBody}
+      </p>
+      <p class="mt-2 text-sm text-[var(--color-snow)]/85">
+        {site.tagline} · {site.acres} acres · {site.address.township}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href={copy.ctaHref} data-season-hero-cta>{copy.ctaLabel}</Button>
+        <Button
+          href="/visit"
+          variant="secondary"
+          class="!border-[var(--color-snow)] !text-[var(--color-snow)] hover:!bg-[var(--color-snow)] hover:!text-[var(--color-needle)]"
+        >
+          Hours &amp; directions
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Intro band — paper panel + polaroid snapshot -->
+  <section class="mx-auto max-w-6xl px-4 py-14">
+    <div class="grid items-center gap-8 rounded-xl border border-[var(--color-border)] bg-[var(--color-paper)] p-6 sm:p-8 lg:grid-cols-2">
+      <div>
+        <p class="font-display text-sm italic text-[var(--color-moss)]">Welcome</p>
+        <h2 class="mt-1 font-display text-3xl text-[var(--color-needle)] sm:text-4xl">
+          Family-grown since {site.since}
+        </h2>
+        <p class="mt-4 text-[var(--color-ink-muted)]">{aboutFarm.blurb}</p>
+        <p class="mt-3 text-sm text-[var(--color-ink-muted)]">
+          Evergreens include Colorado Blue Spruce, Norway Spruce, White Pine, Hemlock, Canaan, Douglas, Fraser, Concolor, and Balsam Fir — dug fresh when ordered.
+        </p>
+        <div class="mt-6">
+          <Button href="/about" variant="secondary">About the farm</Button>
+        </div>
+      </div>
+      <div class="mx-auto w-full max-w-md">
+        <!-- TEMP placeholder -->
+        <figure class="snapshot snapshot--tilt">
+          <img
+            src="/photos/intro-rows.jpg"
+            alt="Rows of evergreen trees growing in a field"
+            class="aspect-[4/3] w-full object-cover"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PathCards — snapshot-headed -->
+  <section class="mx-auto max-w-6xl px-4 pb-14" aria-labelledby="paths-heading">
+    <h2 id="paths-heading" class="font-display text-3xl text-[var(--color-needle)] sm:text-4xl">
+      Two ways to visit the farm
+    </h2>
+    <p class="mt-2 max-w-2xl text-[var(--color-ink-muted)]">
+      Christmas trees in winter. Landscape nursery stock in spring and fall. Wholesale and retail welcome year-round planning.
+    </p>
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <PathCard
+        href="/christmas-trees"
+        tone="christmas"
+        eyebrow="Nov–Dec"
+        title="Christmas Trees"
+        body="Choose-and-cut and fresh-cut pines, firs, and spruces. Wreaths, stands, baling, and holiday music on the farm."
+        cta="Explore Christmas trees"
+        image="/photos/christmas-path.jpg"
+        imageAlt="Christmas trees ready for choose-and-cut"
+      />
+      <PathCard
+        href="/landscape"
+        tone="landscape"
+        eyebrow="Spring & fall"
+        title="Landscape Trees"
+        body="Balled & burlapped evergreens and deciduous specimens, dug fresh when ordered. Delivery and planting available."
+        cta="Explore landscape stock"
+        image="/photos/landscape-path.jpg"
+        imageAlt="Landscape evergreen trees in a nursery field"
+      />
+    </div>
+  </section>
+
+  <!-- 6. How it works -->
+  <StepList steps={copy.steps} />
+
+  <!-- 7. Proof strip — needle -->
+  <StatStrip />
+
+  <!-- 8. Services — chips on paper with bark border -->
+  <section class="mx-auto max-w-6xl px-4 py-14" aria-labelledby="services-heading">
+    <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-paper)] p-6 sm:p-8">
+      <h2 id="services-heading" class="font-display text-3xl text-[var(--color-needle)]">Services</h2>
+      <ul class="mt-6 flex flex-wrap gap-2">
+        {
+          services.map((s) => (
+            <li class="rounded-lg border border-[var(--color-bark)]/40 bg-[var(--color-paper-dark)] px-4 py-2 text-sm font-medium text-[var(--color-needle)]">
+              {s}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. Visit — barn photo + directions -->
+  <section class="mx-auto max-w-6xl px-4 pb-14">
+    <div class="grid gap-8 rounded-xl border border-[var(--color-border)] bg-[var(--color-paper)] p-6 sm:p-8 lg:grid-cols-2 lg:items-center">
+      <div>
+        <h2 class="font-display text-3xl text-[var(--color-needle)]">Visit the farm</h2>
+        <p class="mt-3 text-[var(--color-ink-muted)]">
+          {site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}. About 5 miles west of I-81 Nuangola Exit 159.
+        </p>
+        <ul class="mt-4 space-y-2 text-sm text-[var(--color-ink-muted)]">
+          <li><strong class="text-[var(--color-ink)]">Christmas:</strong> {hours.christmas.summary}</li>
+          <li><strong class="text-[var(--color-ink)]">Landscape:</strong> {hours.landscape.summary}</li>
+        </ul>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Button href="/visit">Directions &amp; hours</Button>
+          <Button href="/contact" variant="secondary">Contact</Button>
+        </div>
+      </div>
+      <div>
+        <!-- TEMP placeholder -->
+        <figure class="snapshot snapshot--tilt-right overflow-hidden">
+          <img
+            src="/photos/barn-visit.jpg"
+            alt="Rural barn and hillside near the farm"
+            class="aspect-[4/3] w-full object-cover"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+        </figure>
+        <p class="mt-3 text-center text-sm text-[var(--color-ink-muted)]">
+          Look for the big green barn · {site.geo.lat.toFixed(5)}, {site.geo.lng.toFixed(5)}
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
